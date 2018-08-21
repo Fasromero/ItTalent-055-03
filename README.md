@@ -1,8 +1,8 @@
 ----------------------------
 BogoAmbiental
 ----------------------------
-Camilo Alejandro Lesmes
-Oscar David Moreno
+Camilo Alejandro Lesmes.
+Oscar David Moreno.
 
 ----------------------------
 Prototipo Inicial -ok
