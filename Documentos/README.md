@@ -7,8 +7,11 @@ Análisis del negocio (página web)
 
 ------------------------------
 Requerimientos
+------------------------------
 Casos de uso
+------------------------------
 Arquitectura y diseño
+------------------------------
 Modelo de datos
 ------------------------------
 Ingresar a la siguiente URL:
