@@ -2,7 +2,7 @@
 BogoAmbiental
 ----------------------------
 Camilo Alejandro Lesmes --
-Oscar David Moreno.
+David Esteban Bello.
 
 ----------------------------
 Prototipo Inicial -ok
