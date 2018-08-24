@@ -30,13 +30,22 @@ App - en desarrollo
   Modulo de Noticias
   
 ----------------------------
-Base de datos 
+Base de datos  -OK
 ----------------------------
+Modelos
+inserción de datos
+.SQL
 
 ----------------------------
-Documentación
+Documentación - OK
 ----------------------------
+Requerimientos
+Casos de uso
+Arquitectura y diseño
+Modelo de datos
 
 ----------------------------
-Rest Ruby
+Rest Ruby -OK 
 ----------------------------
+AppBogota
+AppBlog
