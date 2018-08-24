@@ -1,0 +1,120 @@
+Recomendados
+------------------
+REST FULL: contiene unos recursos , estados
+john von neumann 
+https://schema.org/
+------------------
+Web = recursos --> estados(representa y no almacena): Post
+
+							Hands-on Day
+
+Rails - API
+
+Capa de datos (postgress) --> lenguajes de programaciòn --> json(xml) = API
+
+
+-----------------------------Rails----------------------------------------------
+
+Creando Rest con Rails
+*rails new blog --api
+
+-----------------------------modelos----------------------------------------------
+
+Crea modelos (convencion de la tabla de modelo va la primera en mayuscula)
+
+*rails g model User name:string
+    app--> models --> User
+*rails g model Post title:string body:string user:belongs_to
+
+-----------------------------Añadir en los modelos--------------------------------
+
+User.rb
+
+class User < ApplicationRecord
+    #recibe muchos posts
+    has_many :posts
+    #convenciones cuando se usa de a muchos se incluye 's'
+    validates :name, presence: true
+
+end
+
+----------------------------
+post.rb
+
+class Post < ApplicationRecord
+  #pertenecen a los usuarios
+  belongs_to :user
+  validates :title, presence: true
+  validates :body, presence: true
+end
+
+-------------------  Migrar ---------------------------------------------------
+rails db:migrate
+
+
+
+--------------------incluir GemFile -------------------------------------------
+  gem 'faker'
+  bundle install
+
+  
+
+-----------------registrar datos db seeds.rb ----------------------------------
+# crea 10 usuarios y posts
+
+10.times do 
+    user = User.create ({name: Faker::Name.name})
+    user = user.posts.create({title: Faker::Book.title, body: Faker::Lorem.sentence})
+end
+
+*rails db:seed
+
+--------------------Controladores ------------------------------------------------
+
+rails g controller Posts
+rails g controller Users
+
+--------------------Modificar los Controladores ------------------------------------------------
+app --> controllers --> post_controller.rb
+
+
+class PostsController < ApplicationController
+    def index
+        #con el modelo post, busque los post ordenelos por la fecha que creo automaticamente
+        @posts = Post.order('created_at DESC')
+
+    end
+end
+
+--------------------Modificar los Controladores ------------------------------------------------
+
+config\routes.rb
+incluir: resources :posts
+
+#rails routes
+
+
+--------------------Crear las vista ------------------------------------------------
+como se llama el json y el metodo se llamada index se crea un archivo en la vista
+app --> views -->(crear carpeta) posts --> index.json.jbuilder
+
+json.array @posts do |post|
+    json.id post.id
+    json.title post.title
+    json.body post.body
+
+    json.user do
+        json.id post.user.id
+        json.name post.user.name
+    end
+
+end
+
+decomentar en el GemFile
+gem 'jbuilder', '~> 2.5'
+*bundle install
+
+------------------- ejecutar postman ---------------------------------------------------
+get: localhost:3000/users/
+key: Content-Type
+Value: Application/json
